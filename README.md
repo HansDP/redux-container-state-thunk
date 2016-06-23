@@ -53,23 +53,10 @@ The 'INCREMENT_COUNTER' action will be dispatched within the scope of the view
 
 **Note:** This has not been validated yet (but it should work like this)
 
-If you need to get both a local and global dispatch methods, you should add `redux-thunk` to your store middleware.
+In your local action creators, you get a hold of the store's (global) dispatch method and getState
 
 ```javascript
-
-    const storeFactory = compose(
-      applyMiddleware(thunkMiddleware),
-      window.devToolsExtension ? window.devToolsExtension() : f => f
-    )(createStore)
-
-    const store = storeFactory(rootReducer)
-    ....
-```
-
-In your local action creators, you now can chain local thunk with the global thunk (redux-thunk)
-
-```javascript
-    const localActionCreator = () => (localDispatch, localGetState) => (globalDispatch, globalGetState) => {
+    const localActionCreator = () => (dispatch, getState, globalDispatch, getGlobalState) => {
       localDispatch({ type: 'LOCAL_INCREMENT' })
       globalDispatch({ type: 'GLOBAL_INCREMENT' })
     }
