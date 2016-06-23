@@ -1,6 +1,6 @@
 {
   "name": "redux-container-state-thunk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Local thunk middleware for containers in redux-container-state",
   "main": "lib/index.js",
   "files": [
