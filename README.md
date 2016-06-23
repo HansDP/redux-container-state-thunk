@@ -57,7 +57,7 @@ In your local action creators, you get a hold of the store's (global) dispatch m
 
 ```javascript
     const localActionCreator = () => (dispatch, getState, globalDispatch, getGlobalState) => {
-      localDispatch({ type: 'LOCAL_INCREMENT' })
+      dispatch({ type: 'LOCAL_INCREMENT' })
       globalDispatch({ type: 'GLOBAL_INCREMENT' })
     }
 ```
