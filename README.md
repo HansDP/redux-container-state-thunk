@@ -28,12 +28,12 @@ const incrementAsync = () => {
   }
 }
 
-const counterUpdater = updater((state = 0, action) => {
+const counterUpdater = updater((model = 0, action) => {
   switch (action.type) {
     case 'INCREMENT_COUNTER': 
-      return state + 1
+      return model + 1
     default:
-      return state
+      return model
   }
 })
 
