@@ -10,7 +10,7 @@ The idea behind thunk middleware is based upon the great work of [redux-thunk](h
 
 ```javascript
 import React from 'react'
-import { view } from 'redux-container-state'
+import { view, applyLocalMiddleware } from 'redux-container-state'
 import localThunk from 'redux-container-state-thunk'
 
 
@@ -37,7 +37,9 @@ const counterUpdater = updater((state = 0, action) => {
   }
 })
 
-export default view(localThunk)(({model, dispatch}) => (
+const viewWithMiddleware = compose(applyLocalMiddleware(localThunk))(view)
+
+export default viewWithMiddleware(({model, dispatch}) => (
   <div>
     <button onClick={ () => dispatch(incrementAsync()) }>Start counter</button>
     Current count: { model }
